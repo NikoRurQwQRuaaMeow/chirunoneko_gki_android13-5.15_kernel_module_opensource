@@ -1,0 +1,9 @@
+config MI_RMAP_EFFICIENCY
+	tristate "Xiaomi rmap efficiency optimization"
+	depends on ANDROID_VENDOR_HOOKS
+	depends on ANDROID_VENDOR_OEM_DATA
+	default n
+	help
+	  Page mapcount-based reclaim optimization backported from Android 6.6.
+	  Protects heavily shared pages from expensive rmap walks and TLB
+	  shootdowns while preserving the Android 5.15 vendor hook ABI.

@@ -1,0 +1,54 @@
+config MI_LAUNCH_BOOST
+	tristate "Xiaomi app launch boost (iorap2)"
+	depends on MMU
+	depends on MULTIUSER
+	select TRACEPOINTS
+	help
+	  Kernel module for accelerating Android application cold start by
+	  collecting file page access patterns during app launch and
+	  performing predictive page pre-reading on subsequent launches.
+
+	  The module hooks into the VFS read and page fault paths to record
+	  which file pages an application accesses during startup. On later
+	  launches of the same app, it pre-reads those pages into the page
+	  cache, reducing I/O wait time during cold start.
+
+	  Features:
+	    - File page access pattern collection via vendor hooks
+	    - Bitmap-based page tracking per file (up to 2GB per file)
+	    - Multi-app tracking with LRU eviction (up to 100 apps)
+	    - PTE-level hot page snapshot and swap-in acceleration
+	    - Debug interface via /proc/iorap_node/
+
+	  If unsure, say N.
+
+config MI_LAUNCH_BOOST_PTE_PREREAD
+	bool "PTE-based hot page snapshot and pre-reading"
+	depends on MI_LAUNCH_BOOST
+	default y
+	help
+	  Enable Page Table Entry (PTE) level hot page detection. This
+	  feature walks the process page tables to identify pages that are
+	  both referenced and young (actively used), then pre-reads them
+	  via swap-in (anonymous pages) or fadvise (file pages).
+
+	  This provides more accurate pre-reading than file-level
+	  collection alone, as it captures the actual working set of
+	  the application at the PTE level.
+
+	  If unsure, say Y.
+
+config MI_LAUNCH_BOOST_FILE_PREREAD
+	bool "File-based pre-reading via vfs_fadvise"
+	depends on MI_LAUNCH_BOOST
+	depends on MI_LAUNCH_BOOST_PTE_PREREAD
+	default n
+	help
+	  Enable file-based pre-reading using vfs_fadvise(WILLNEED).
+	  This feature is used alongside PTE preread to pre-load file
+	  pages identified during the snapshot phase.
+
+	  Note: This is currently disabled by default as the PTE-based
+	  approach handles file pages through the generic prepage path.
+
+	  If unsure, say N.

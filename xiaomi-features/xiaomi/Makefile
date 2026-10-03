@@ -1,0 +1,10 @@
+obj-$(CONFIG_MI_MEM_ENGINE)	+= mi_mem_engine/
+obj-$(CONFIG_MI_WMARK)	+= mi_wmark/
+obj-$(CONFIG_LZ4ASM)	+= lz4asm/
+obj-$(CONFIG_KSHRINK_SLABD)	+= kshrink_slabd/
+obj-$(CONFIG_MI_UNION_POWER)	+= unionpower/
+obj-$(CONFIG_MI_LAUNCH_BOOST)	+= launch_boost/
+obj-$(CONFIG_MI_RMAP_EFFICIENCY)+= mi_rmap_efficiency/
+obj-$(CONFIG_MI_ASYNC_RECLAIM)+= mi_async_reclaim/
+obj-$(CONFIG_MI_BINDER_PRIO)   += binder_prio/
+obj-$(CONFIG_MI_SW_SYNC)   += mi_sw_sync/

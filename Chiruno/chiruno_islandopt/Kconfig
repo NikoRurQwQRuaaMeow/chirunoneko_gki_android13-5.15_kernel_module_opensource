@@ -1,0 +1,5 @@
+config CHIRUNO_ISLAND_OPT
+    tristate "CHIRUNO_ISLAND_OPT to improve island experience "
+	default n
+    help
+      Used to boost island.

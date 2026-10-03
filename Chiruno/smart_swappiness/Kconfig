@@ -1,0 +1,15 @@
+config CHIRUNO_SMART_SWAPPINESS
+	bool "Chiruno Kernel smart swappiness support"
+	default n
+	help
+	  This option enables a swappiness controller for Android 5.15 GKI
+	  kernels. It monitors available memory once per second. When memory
+	  pressure is detected, it lowers vm_swappiness and the swappiness of
+	  every memory cgroup. When the pressure clears, it restores the
+	  boot-time swappiness value.
+
+	  The controller is enabled by default only on devices in the 8 GiB RAM
+	  range. On other devices it remains disabled at boot and can be enabled
+	  through /proc/chiruno_swappiness/smart_swappiness.
+
+	  Say Y here to compile this controller directly into the kernel.

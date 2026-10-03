@@ -1,0 +1,7 @@
+config MI_ASYNC_RECLAIM
+       tristate "Async LRU page reclaim optimization"
+       default n
+       help
+         Async page reclaim optimization. Offloads failed page trylock
+         handling from the direct reclaim path to a dedicated kthread,
+         reducing reclaim latency on the critical path.

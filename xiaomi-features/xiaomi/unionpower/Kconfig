@@ -1,0 +1,5 @@
+config MI_UNION_POWER
+    tristate "union power load monitor"
+    default n
+    help
+      The case is used to monitor load

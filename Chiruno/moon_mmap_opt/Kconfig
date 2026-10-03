@@ -1,0 +1,7 @@
+config MOON_MMAP_OPT
+	tristate "Moon high-order allocation optimization"
+	depends on ANDROID_VENDOR_HOOKS
+	default n
+	help
+	  Tune DMA-IOMMU high-order allocations and allow real-time tasks to
+	  bypass direct reclaim throttling.

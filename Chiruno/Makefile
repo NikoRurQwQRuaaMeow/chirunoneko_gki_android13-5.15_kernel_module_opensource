@@ -1,0 +1,9 @@
+subdir-ccflags-y += -I$(srctree)/Chiruno/slim_walt/include
+obj-$(CONFIG_CHIRUNO_ISLAND_OPT)	+= chiruno_islandopt/
+obj-$(CONFIG_CHIRUNO_MI_PERFMGR)	+= perfmgr/
+obj-$(CONFIG_CHIRUNO_SMART_SWAPPINESS) +=	smart_swappiness/
+obj-$(CONFIG_CHIRUNO_KERNEL_VERSION) +=	kernel_version/
+obj-$(CONFIG_CHIRUNO_SLIM_WALT) += slim_walt/
+obj-$(CONFIG_CHIRUNO_DYNAMIC_READAHEAD) += dynamic_readahead/
+obj-$(CONFIG_MI_MOON_BINDER_PRIO)	+= moon_binder_prio/
+obj-$(CONFIG_MOON_MMAP_OPT)		+= moon_mmap_opt/

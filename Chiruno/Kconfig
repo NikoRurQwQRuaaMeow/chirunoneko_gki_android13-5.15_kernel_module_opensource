@@ -1,0 +1,15 @@
+source "drivers/Chiruno/perfmgr/Kconfig"
+source "drivers/Chiruno/smart_swappiness/Kconfig"
+source "drivers/Chiruno/kernel_version/Kconfig"
+source "drivers/Chiruno/slim_walt/Kconfig"
+source "drivers/Chiruno/dynamic_readahead/Kconfig"
+source "drivers/Chiruno/moon_binder_prio/Kconfig"
+source "drivers/Chiruno/moon_mmap_opt/Kconfig"
+
+menu "Chiruno module blacklist"
+
+config XIAOMI_MODULE_BLACKLIST
+	bool "Blacklist useless Xiaomi modules"
+	default y
+
+endmenu

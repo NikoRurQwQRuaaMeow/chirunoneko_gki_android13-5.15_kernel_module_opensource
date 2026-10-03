@@ -1,0 +1,10 @@
+config MI_BINDER_PRIO
+	tristate "Binder priority boost for Xiaomi UI paths"
+	depends on ANDROID_BINDER_IPC
+	default n
+	help
+	  Boosts scheduling priority (SCHED_FIFO) for critical Android
+	  binder transactions involving SurfaceFlinger, SystemUI,
+	  MIUI Home, and CameraServer.  Improves UI responsiveness
+	  on Xiaomi devices.
+
